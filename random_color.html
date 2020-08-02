@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        var interv;
+        window.addEventListener("load",first);
+        function first(){
+            var bt1 = document.getElementById("btn1");
+            var bt2 = document.getElementById("btn2");
+            bt1.addEventListener("click",iniciarset);
+            bt2.addEventListener("click",parar);
+        }
+        function iniciarset(){
+            interv = setInterval(iniciarCor,1000);
+        }
+        function iniciarCor(){
+            var div1 = document.getElementById("teste"); 
+            var r = Math.floor(Math.random()*255);
+            var g = Math.floor(Math.random()*255);
+            var b = Math.floor(Math.random()*255);
+            div1.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+        }
+        function parar(){
+            clearInterval(interv);
+        }
+    </script>
+</head> 
+<body>
+    <div id="teste"></div>
+    <button id="btn1">Iniciar</button>
+    <button id="btn2">Parar</button>
+</body>   
+</html>

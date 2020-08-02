@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #carro{
+            width: 200px;
+            height: 379px;
+        }
+        .c1{
+            background-image: url("_img/c1.jpg");
+        }
+        .c2{
+            background-image: url("_img/c2.jpg");
+        }
+        .c3{
+            background-image: url("_img/c3.jpg");
+        }    
+    </style>
+
+    <script>
+        function trocaCarro(c){
+            var obj = document.getElementById("carro");
+            var conc = "c"+String(c);
+            obj.setAttribute("class", conc);
+        }
+
+        function removerCarro(){
+            var obj = document.getElementById("carro");
+            obj.removeAttribute("class");
+        }
+
+        function verifica(){
+            var obj = document.getElementById("carro");
+            if (obj.hasAttribute("class")){
+                alert("tem")
+            } else {
+                alert("não tem")
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="trocaCarro(1)">carro 1</button>
+    <button onclick="trocaCarro(2)">carro 2</button>
+    <button onclick="trocaCarro(3)">carro 3</button>
+    <button onclick="removerCarro()">Remover Carro</button>
+    <button onclick="verifica()">Verifica</button>
+    <div id="carro"></div>
+    
+</body>
+</html> 

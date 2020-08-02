@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body{
+            background-color: #000;
+        }
+
+
+        #relogio{
+            background-color: #000;
+            font: bold 100pt Arial;
+            color: #0f0;
+            width: 600px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -300px;
+            margin-top: -76.5px;
+        }
+    </style>
+    <script>
+        var interv = setInterval(rel,1000);
+        function rel(){
+            var data = new Date();
+            var h = data.getHours();
+            
+            var m = data.getMinutes();
+            var s = data.getSeconds();
+            if (s < 10) {
+                s = "0" + s;
+            }
+            if (h < 10) {
+                h = "0" + h;
+            } 
+            if (m < 10) {
+                m = "0" + m;
+            }
+            var obj = document.getElementById("relogio").value = h + ":" + m + ":" + s;
+            
+        }
+    </script>
+</head>
+<body>
+
+        <input type="text" id="relogio">
+ 
+</body>
+
+
+</html>

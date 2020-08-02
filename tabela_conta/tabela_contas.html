@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="utf-8">
+<head>
+    <meta charset="utf-8">
+    <title>calcular</title>
+    <style>
+        *{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18pt;
+        }
+        form{
+            height: 400px;
+            width: 400px;
+            padding: 30px;
+            position: relative;
+            display: block;
+            border: 22px double red;
+            margin:auto;
+        }
+
+        input.caixadetexto{
+            font-size: 18pt;
+            border: 1px solid black;
+            margin-top: 2px;
+            background-color: yellow;
+            appearance: none;
+        }
+
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0; 
+}
+        
+        span{
+            font-weight:bolder    
+        }
+
+        button{
+            margin-top: 2px;
+        }
+    
+    </style>
+</head>
+<body>
+    
+        <form action="get" name="form1">
+            <span>VALOR 1:</span> <input type="number" name="v1" class="caixadetexto"/>
+            <br/>
+            <span>VALOR 2:</span> <input type="number" name="v2" class="caixadetexto"/>
+            <br/>
+            <br/>
+            <span>OPÇÕES:</span>
+            <br/>
+            <input type="radio" name="conta" id="soma" onclick="idf_muda(0)"> SOMA<br/>
+            <input type="radio" name="conta" id="sub" onclick="idf_muda(1)"> SUBTRAÇÃO<br/>
+            <input type="radio" name="conta" id="mult" onclick="idf_muda(2)"> MULTIPLCAÇÃO<br/>
+            <input type="radio" name="conta" id="divs" onclick="idf_muda(3)"> DIVISÃO<br/> 
+            <span>RESULTADO:</span><br/>
+            <input type="number" name="resposta" class="caixadetexto">
+            <br/>
+            <input type="button" value="Calcular" name="calc" id="calcular" onclick='calc_op()'/>
+        </form>
+        
+
+    
+    <script src="jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>   
+</body>
+</html>

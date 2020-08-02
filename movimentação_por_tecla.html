@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #quadrado{
+            width: 50px;
+            height: 50px;
+            top: 0px;
+            left: 0px;
+            position: absolute;
+            background-color: #00f;
+        }
+    </style>
+    <script>
+        var obj,dx,dy,px=0,py=0,vel=2,tecla,anima,estado=0;
+
+        function iniciar(){
+            obj = document.getElementById("quadrado");
+            obj.style.backgroundColor = "#00f";
+            document.addEventListener("keydown",game); 
+            obj.removeEventListener("click",iniciar);           //se não cancelar, ela ja existente, funciona....mas com problema
+            obj.addEventListener("click",moverParar);
+        }
+        function moverParar(){
+                document.removeEventListener("keydown",game);
+                obj.style.backgroundColor = "#f00";
+                cancelAnimationFrame(anima);
+                obj.addEventListener("click",iniciar);
+                estado = 0;                                 // se não  zerar, a tecla anterior a pausa não funciona ao dar play, por causa dos condicionais
+        }
+        function game(){
+            tecla = event.keyCode;
+            if (estado == 0 || estado != 1) {
+                if (tecla == 37) {
+                    cancelAnimationFrame(anima);
+                    dx = -1;
+                    dy = 0;
+                    estado = 1
+                    moveTecla();
+                }
+            }
+            if (estado == 0 || estado != 2) {
+                if (tecla == 38) {
+                    cancelAnimationFrame(anima);
+                    estado = 2;
+                    dx = 0;
+                    dy = -1;
+                    moveTecla();
+                }
+            }
+            if (estado == 0 || estado != 3) {
+                if (tecla == 39) {
+                    cancelAnimationFrame(anima);
+                    estado = 3;
+                    dx = 1;
+                    dy = 0;
+                    moveTecla();
+                }
+            }
+            if (estado == 0 || estado != 4) {
+                if (tecla == 40) {
+                    cancelAnimationFrame(anima);
+                    estado = 4;
+                    dx = 0;
+                    dy = 1;
+                    moveTecla();
+                }
+            }
+        }
+        function moveTecla(){
+            px+= dx*vel;
+            py+= dy*vel;
+            obj.style.left = px+"px";
+            obj.style.top = py+"px";
+            anima = requestAnimationFrame(moveTecla);
+        }
+        window.addEventListener("load",iniciar);
+    </script>
+</head>
+<body>
+    <div id="quadrado"></div>
+
+</body>
+</html> 
